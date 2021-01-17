@@ -1,0 +1,35 @@
+{
+  "name": "api-decision-helperii",
+  "version": "2.2.0",
+  "description": "La decisión la tomas tu...",
+  "main": "server.js",
+  "engines": {
+    "node": "14.X"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon -r dotenv/config -r esm api/server.js",
+    "start": "node -r esm api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Api-Decision-HelperII"
+  },
+  "keywords": [],
+  "author": "José Carlos Jordán Vergara",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.9",
+    "statuses": "^2.0.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
