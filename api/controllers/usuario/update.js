@@ -4,8 +4,8 @@ import HTTPerror from "http-errors";
 const update = async (req, res, next) => {
   try {
     // Tenemos que verificar que no exista ya en la BD
-    if (req.body._id) {
-      if (req.params.id === req.body._id) {
+    if (req.body.id) {
+      if (req.params.id === req.body.id) {
         let okUsuario = true;
         let okCorreo = true;
         let id = req.params.id;
@@ -19,13 +19,14 @@ const update = async (req, res, next) => {
           if (correo && correo._id != id)
             okCorreo = false;
         }
-        let codigo = await usuarioDAO.checkUserbyId(req.body._id);
+        let codigo = await usuarioDAO.checkUserbyId(req.body.id);
         if (codigo) {
           if(okUsuario && okCorreo)  {
-
+            const cuerpo = Object.assign({},req.body);
+            delete cuerpo.id;
             const usuarioUpdated = await usuarioDAO.update(
               req.params.id,
-              Object.assign(codigo,req.body)
+              Object.assign(codigo,cuerpo)
             );
             res.json(usuarioUpdated);
           } else {

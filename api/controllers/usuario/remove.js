@@ -10,6 +10,7 @@ const remove = async (req, res, next) => {
       next(HTTPerror(400, { message: "Falta el id" }));
     } else {
       // Borrado en cascada (Positivos-Negativos-Preguntas-Usuarios)
+      console.log("Borrando", req.params.id);
       const resultPositivo = await positivoDAO.removeAll(req.params.id);
       resultPositivo["Coleccion"] = "Positivos";
       const resultNegativo = await negativoDAO.removeAll(req.params.id);
